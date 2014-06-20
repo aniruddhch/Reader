@@ -112,7 +112,13 @@
 		}
 	}
 
-	NSString *toolbarTitle = [document.fileName stringByDeletingPathExtension];
+    NSString *toolbarTitle;
+    if (document.title) {
+        toolbarTitle = document.title;
+    }
+    else {
+        [document.fileName stringByDeletingPathExtension];
+    }
 
 	CGRect toolbarRect = scrollViewRect; // Toolbar frame
 	toolbarRect.size.height = TOOLBAR_HEIGHT; // Default toolbar height
